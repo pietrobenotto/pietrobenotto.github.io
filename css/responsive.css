@@ -374,15 +374,16 @@
 		flex-direction: column;
 	}
 
-	.col-info {
+	.info-and-image{
+		flex-direction: column;
 		max-width: 450px;
 		display: block;
 		margin: auto;
 	}
 
-	.blog_post img{
-		max-width: 450px;
-		max-height: 450px;
+	.info-and-image .img-container{
+		width: 100%;
+		min-width: unset;
 	}
 
 	.col-info ul li {
@@ -408,11 +409,8 @@
 		display: none;
 	}
 
-	.blog_post img {
-		margin-right: unset;
+	.info-and-image img {
 		margin: auto;
-		float: none;
-		display: block;
 	}
 
 	.blog_details {
@@ -422,9 +420,9 @@
 		margin: auto;
 	}
 
-	.blog_details li {
+	/*.blog_details li {
 		text-indent: 20px;
-	}
+	}*/
 
 	.blog_details h2 {
 		text-align: center;

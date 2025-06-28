@@ -737,23 +737,8 @@ button:focus {
 .row-post {
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px
-}
-
-.col-info {
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  max-height: 350px;
-  padding-right: 15px;
-  padding-left: 15px;
-  -ms-flex: 0 0 25%;
-  flex: 0 0 25%;
-  display: flex;
-  flex-direction: column;
 }
 
 .col-blog-item {
@@ -769,6 +754,9 @@ button:focus {
   margin-bottom: 100px;
 }
 
+.blog_post{
+  height: 100%;
+}
 .blog_info {
   margin-top: auto;
   margin-bottom: 0px;
@@ -804,24 +792,53 @@ button:focus {
   font-weight: bold;
 }
 
-
-.blog_post .img-container {
+.info-and-image {
+  display: flex;
+  flex-direction: row;
+  -ms-flex: 0 0 40%;
+  flex: 0 0 40%;
+  height: fit-content;
   width: 100%;
-  max-width: 350px;
-  min-height: 350px;
-  float: left;
+}
+
+.col-info {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  min-width: 200px;
+  padding-right: 15px;
+  padding-left: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-and-image .img-container {
+  min-width: 350px;
+  width: 350px;
   margin-right: 30px;
   display: flex;
   align-items: flex-end;
   flex-direction: column;
 }
 
-.blog_post img{
+.info-and-image img {
   max-width: 100%;
   max-height: 100%;
 }
 
-.blog_post .img-container .additional-image {
+.area-balanced {
+  --ratio : 1;
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+
+  /* Dynamically scale width so that width * height = constant area */
+  width: calc(100% * var(--ratio));
+  height: auto;
+}
+
+
+.info-and-image .img-container img:not(:last-child) {
   margin-bottom: 20px;
 }
 
@@ -831,6 +848,7 @@ button:focus {
 
 .blog_details {
   display: grid;
+  height: 100%;
 }
 
 .blog_details h2 {
@@ -865,7 +883,8 @@ button:focus {
   width: fit-content;
   background: #d33030;
 }
-.blog_info .me{
+
+.me {
   color: #970000;
 }
 
@@ -3707,7 +3726,7 @@ h6 {
   top: 50%;
   transform: translateY(-50%);
   font-size: 20px;
-  color: #766dff;
+  color: #970000;
 }
 
 .personal_text .basic_info li:last-child {
