@@ -60,6 +60,10 @@
 }
 
 @media (max-width:991px) {
+	.main_menu{
+		position: fixed;
+		width: 100%;
+	}
 	.navbar-toggler {
 		border: none;
 		border-radius: 0;
