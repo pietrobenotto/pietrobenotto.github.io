@@ -732,6 +732,22 @@ button:focus {
   opacity: 0.851;
 }
 
+.col-skills{
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    max-width: 180px;
+    margin: auto;
+}
+
+.row-skills{
+  margin: auto;
+  width: fit-content;
+  flex-wrap: wrap;
+}
+
 /*============ blog_left_sidebar css ==============*/
 
 .row-post {
@@ -3373,6 +3389,9 @@ h6 {
   font-family: "Roboto", sans-serif;
   margin-bottom: 40px;
 }
+.welcome_text{
+  text-align: justify;
+}
 
 .wel_item {
   border: 1px solid #eeeeee;
@@ -3495,6 +3514,7 @@ h6 {
   position: relative;
   padding-top: 40px;
   padding-bottom: 60px;
+  overflow: hidden;
 }
 
 .tabs_inner .tab-content .tab-pane .list:before {
@@ -3544,6 +3564,8 @@ h6 {
 .tabs_inner .tab-content .tab-pane .list li .media .d-flex {
   padding-right: 100px;
   width: 250px;
+  min-width: 250px;
+  max-width: 250px;
 }
 
 .tabs_inner .tab-content .tab-pane .list li .media .d-flex p {
@@ -3650,10 +3672,22 @@ h6 {
   -webkit-text-fill-color: transparent;
 }
 
+.footer_area .f_widget{
+  font-size: 12px;
+}
 /* End Feature Area css
 ============================================================================================ */
 /* Personal Profile Area css
 ============================================================================================ */
+
+.logo_h{
+  max-width: 70%;
+}
+.logo_h img{
+  max-width: 100%;
+}
+
+
 .profile_area .col-lg-7 {
   vertical-align: middle;
   align-self: center;
