@@ -199,20 +199,28 @@ button:focus {
   margin-bottom: 50px;
   position: relative;
   z-index: 1;
+  background: #000  ;
   background-image: -moz-linear-gradient(0deg, #970000 0, #aa3232 100%);
   background-image: -webkit-linear-gradient(0deg, #970000 0, #aa3232 100%);
-  background-image: -ms-linear-gradient(0deg, #970000 0, #aa3232 100%)
+  background-image: -ms-linear-gradient(0deg, #970000 0, #aa3232 100%);
 }
 
 .blog_banner .banner_inner {
   min-height: 500px;
-  padding-top: 100px
+  padding-top: 100px;
+  background: url(../img/background.jpg);
+  background-color: rgba(0,0,0,0.4);
+  background-blend-mode: darken;
+  /*opacity: 0.5;*/
+  background-position: left;
+  background-size: cover;
 }
 
 .blog_banner .banner_inner .blog_b_text {
   max-width: 700px;
   margin: auto;
-  color: #fff
+  color: #fff;
+  opacity:1;
 }
 
 .blog_banner .banner_inner .blog_b_text h2 {
@@ -372,7 +380,7 @@ button:focus {
   text-align: right
 }
 
-.blog_info .post_tag {
+.post_tag {
   font: 300 14px/21px Roboto, sans-serif;
   color: #222;
   padding-bottom: 20px;
@@ -481,12 +489,17 @@ button:focus {
   text-align: justify
 }
 
-.blog_details .genric-btn.danger {
+.blog_details .genric-btn {
   display: block;
   margin: auto;
   width: fit-content;
-  background: #d33030
 }
+
+.blog_details .genric-btn.danger {
+  background: #d33030;
+  display: block;
+}
+
 
 .me {
   color: #970000
@@ -563,11 +576,14 @@ h6 {
   text-align: center;
   text-decoration: none;
   font-weight: 500;
-  cursor: pointer;
   -webkit-transition: all .3s ease 0s;
   -moz-transition: all .3s ease 0s;
   -o-transition: all .3s ease 0s;
   transition: all .3s ease 0s
+}
+
+a.genric-btn {
+  cursor: pointer;
 }
 
 .genric-btn:focus {
@@ -576,6 +592,10 @@ h6 {
 
 .genric-btn.circle {
   border-radius: 20px
+}
+
+.genric-btn.small {
+  line-height:unset
 }
 
 .genric-btn.arrow {
@@ -597,11 +617,11 @@ h6 {
   border: 1px solid transparent
 }
 
-.genric-btn.info:hover {
+/*.genric-btn.info:hover {
   color: #38a4ff;
   border: 1px solid #38a4ff;
   background: #fff
-}
+}*/
 
 .genric-btn.danger {
   color: #fff;
