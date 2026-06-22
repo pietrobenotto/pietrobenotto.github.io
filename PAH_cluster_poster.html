@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PAH Cluster Poster - Benotto & Vulcani 2026</title>
+<style>
+  /* ── Tokens ─────────────────────────────────────────── */
+  :root {
+    --unipd-red:   #9B1C31;
+    --unipd-dark:  #6B1221;
+    --header-bg:   #1a1a2e;      /* deep navy for space feel */
+    --box-bg:      #ffffff;
+    --box-border:  #e0e0e0;
+    --body-bg:     #f4f4f6;
+    --text-main:   #1a1a1a;
+    --text-muted:  #555;
+    --text-white:  #ffffff;
+    --accent:      #9B1C31;
+    --section-title-bg: #9B1C31;
+
+    --font-body:   'Helvetica Neue', Arial, sans-serif;
+    --font-title:  'Helvetica Neue', Arial, sans-serif;
+
+    /* A0 at 96dpi ≈ 3179×4494px; we use 1200px wide for screen */
+    --poster-w: 1200px;
+    --poster-h: 1697px;
+    --col-gap:  14px;
+    --box-pad:  14px 16px;
+    --radius:   6px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html{
+    overflow: auto;
+  }
+
+  body {
+    background: #888;
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-main);
+    /*width: 84.1cm;
+    height: 118.9cm;
+    %margin: 30mm 45mm 30mm 45mm;
+    overflow: hidden;*/
+  }
+
+  /* ── Poster shell ───────────────────────────────────── */
+  .poster {
+    width: var(--poster-w);
+    height: var(--poster-h);
+    background: var(--body-bg);
+    margin: 20px auto;
+    box-shadow: 0 8px 40px rgba(0,0,0,.5);
+    /*overflow: hidden;*/
+  }
+
+  /* ══════════════ HEADER ════════════════════════════════ */
+  .header {
+    background: var(--header-bg);
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    min-height: 115px;
+    border-bottom: 5px solid var(--unipd-red);
+  }
+
+  .header-photo {
+    flex: 0 0 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 10px 12px 14px;
+  }
+  .photo-circle {
+    width: 82px; height: 82px;
+    border-radius: 50%;
+    background: #3a3a5c;
+    border: 3px solid var(--unipd-red);
+    display: flex; align-items: center; justify-content: center;
+    color: #aaa; font-size: 10px; text-align: center; padding: 6px;
+  }
+
+  .header-titles {
+    flex: 1;
+    padding: 14px 10px 12px 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .poster-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--text-white);
+    letter-spacing: 0.2px;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+  .poster-authors {
+    font-size: 12.5px;
+    color: #ccc;
+    margin-top: 5px;
+  }
+  .poster-affil {
+    font-size: 10.5px;
+    color: #999;
+    margin-top: 2px;
+  }
+
+  .header-logos {
+    flex: 0 0 155px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 14px;
+    border-left: 1px solid #333;
+  }
+  .logo-box {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px;
+    padding: 5px 10px;
+    width: 130px;
+    height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    color: #bbb; font-size: 10px; text-align: center;
+    font-weight: 600; letter-spacing: 0.5px;
+  }
+
+  /* ══════════════ BODY GRID ══════════════════════════════ */
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--col-gap);
+    padding: 14px;
+  }
+
+  /* span helpers */
+  .col-span-2 { grid-column: span 2; }
+  .col-span-3 { grid-column: span 3; }
+  .row-span-2 { grid-row: span 2; }
+
+  /* ── Box component ──────────────────────────────────── */
+  .box {
+    background: var(--box-bg);
+    border: 1px solid var(--box-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .box-header {
+    background: var(--section-title-bg);
+    color: var(--text-white);
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 12px;
+    line-height: 1.3;
+  }
+
+  .box-body {
+    padding: var(--box-pad);
+    flex: 1;
+  }
+
+  /* ── Typography inside boxes ───────────────────────── */
+  .box-body p { margin-bottom: 7px; font-size: 12.5px; }
+  .box-body p:last-child { margin-bottom: 0; }
+
+  .box-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .box-body ul li {
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 5px;
+    font-size: 12.5px;
+  }
+  .box-body ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: var(--unipd-red);
+    font-weight: bold;
+  }
+
+  .box-body h4 {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--unipd-red);
+    margin: 8px 0 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* highlight stat pill */
+  .stat-row {
+    display: flex;
+    gap: 10px;
+    margin: 8px 0;
+    flex-wrap: wrap;
+  }
+  .stat-pill {
+    background: var(--unipd-red);
+    color: white;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .stat-pill span {
+    font-size: 16px;
+    font-weight: 900;
+    display: block;
+    line-height: 1.1;
+  }
+
+  /* ── Figure placeholder ─────────────────────────────── */
+  .fig-placeholder {
+    background: #1a1a2e;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #8a8ab0;
+    font-size: 10.5px;
+    text-align: center;
+    padding: 10px;
+    margin: 6px 0 4px;
+    border: 1.5px dashed #3a3a5c;
+    min-height: 110px;
+  }
+  .fig-placeholder .fig-icon {
+    font-size: 22px;
+    margin-bottom: 4px;
+    color: var(--unipd-red);
+  }
+  .fig-placeholder .fig-label {
+    font-weight: 700;
+    font-size: 11px;
+    color: #b0b0cc;
+    margin-bottom: 2px;
+  }
+
+  .fig-caption {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 3px;
+  }
+
+  /* two-figure row */
+  .fig-row {
+    display: grid;
+    gap: 8px;
+    margin: 6px 0;
+  }
+  .fig-row-2 { grid-template-columns: 1fr 1fr; }
+  .fig-row-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  /* ── Abstract special styling ───────────────────────── */
+  .abstract-box .box-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+
+  /* key numbers sidebar */
+  .key-numbers {
+    background: #f0f0f5;
+    border-left: 4px solid var(--unipd-red);
+    border-radius: 4px;
+    padding: 10px 12px;
+  }
+  .key-numbers .kn-title {
+    font-size: 10.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--unipd-red);
+    margin-bottom: 8px;
+  }
+  .kn-item {
+    margin-bottom: 7px;
+  }
+  .kn-item .kn-val {
+    font-size: 19px;
+    font-weight: 900;
+    color: var(--unipd-red);
+    line-height: 1;
+  }
+  .kn-item .kn-desc {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    line-height: 1.3;
+  }
+
+  /* ── References ─────────────────────────────────────── */
+  .refs-box .box-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 20px;
+  }
+  .ref-item {
+    font-size: 10px;
+    color: var(--text-muted);
+    line-height: 1.35;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 3px;
+  }
+
+  /* ── Conclusions ────────────────────────────────────── */
+  .conclusions-box .box-body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #2d1020 100%);
+    color: white;
+  }
+  .conclusions-box .box-body ul li {
+    color: #eee;
+    font-size: 12.5px;
+  }
+  .conclusions-box .box-body ul li::before {
+    color: #f5a0b0;
+  }
+
+  /* ── RPS panel ──────────────────────────────────────── */
+  .rps-fig-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin: 6px 0 4px;
+  }
+  .rps-fig-mini {
+    background: #0d0d1a;
+    border-radius: 4px;
+    height: 80px;
+    border: 1px solid #2a2a4a;
+    display: flex; align-items: center; justify-content: center;
+    color: #6060a0; font-size: 9px; text-align: center; padding: 4px;
+  }
+
+  /* ── Divider ────────────────────────────────────────── */
+  .divider-row {
+    grid-column: span 3;
+    height: 3px;
+    background: linear-gradient(90deg, var(--unipd-red), transparent);
+    border-radius: 2px;
+    margin: 2px 0;
+  }
+
+  /* ── Footer ─────────────────────────────────────────── */
+  .poster-footer {
+    background: var(--header-bg);
+    border-top: 3px solid var(--unipd-red);
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: #888;
+  }
+  .poster-footer a { color: #aaa; }
+
+  /* ── Data methodology two-col ───────────────────────── */
+  .two-col-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  /* telescope tag */
+  .tag {
+    display: inline-block;
+    background: #1a1a2e;
+    color: #a0b0ff;
+    border-radius: 3px;
+    padding: 1px 6px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-right: 3px;
+    margin-bottom: 2px;
+  }
+
+  /* mini inline key-value */
+  .kv { margin-bottom: 4px; font-size: 12px; }
+  .kv strong { color: var(--unipd-red); }
+
+</style>
+</head>
+<body>
+
+<div class="poster">
+
+  <!-- ═══════════════════ HEADER ═══════════════════════ -->
+  <div class="header">
+
+    <div class="header-photo">
+      <div class="photo-circle">Author<br/>Photo</div>
+    </div>
+
+    <div class="header-titles">
+      <div class="poster-title">Galaxy Cluster Environmental Effects<br/>on PAH<sub style="font-size:16px">3.3</sub> Emission</div>
+      <div class="poster-authors" style="margin-top:7px;">
+        <strong style="color:#fff;">P. Benotto</strong><sup style="color:#f5a0b0;">1,2</sup>,&nbsp;
+        <strong style="color:#fff;">B. Vulcani</strong><sup style="color:#f5a0b0;">1</sup>
+      </div>
+      <div class="poster-affil">
+        <sup>1</sup>INAF, Osservatorio Astronomico di Padova&nbsp;&nbsp;
+        <sup>2</sup>Dipartimento di Fisica e Astronomia "G. Galilei", Università di Padova
+      </div>
+      <div class="poster-affil" style="margin-top:4px;color:#f5a0b0;font-size:10.5px;">
+        📧 pietro.benotto@inaf.it
+      </div>
+    </div>
+
+    <div class="header-logos">
+      <div class="logo-box">INAF<br/><span style="font-size:8px;color:#999;font-weight:400;">Osservatorio di Padova</span></div>
+      <div class="logo-box">UNIVERSITÀ<br/><span style="font-size:8px;color:#999;font-weight:400;">degli Studi di Padova</span></div>
+    </div>
+
+  </div><!-- /header -->
+
+  <!-- ═══════════════════ BODY ════════════════════════= -->
+  <div class="body">
+
+
+    <!-- ── ABSTRACT (full width) ─────────────────────── -->
+    <div class="box col-span-2 abstract-box">
+      <div class="box-header">Abstract</div>
+      <div class="box-body">
+        <div>
+          <p>We map the PAH<sub>3.3</sub> μm emission in <strong>672 galaxies</strong> (453 cluster, 219 field) at <em>z</em> ~ 0.2-0.4, using JWST NIRCam medium-band photometry across six deep fields: <strong>Abell 2744, MACS0416, Abell 370, COSMOS, UDS,</strong> and <strong>GOODS-South</strong>. Together with ancillary HST data, each galaxy is detected in 15-30+ filters from UV to 5 μm.</p>
+          <p>We find that only <strong>7.5%</strong> of cluster galaxies are PAH emitters, compared to <strong>44.7%</strong> in the field — a factor of ~6 suppression. The fraction of PAH emitters drops sharply in the UVJ transition zone within clusters, even at stellar masses and star formation rates comparable to field analogues. This cannot be explained solely by different SFRs, pointing to direct environmental destruction or removal of PAH molecules by ram pressure stripping (RPS) and related processes.</p>
+        </div>
+        <div class="key-numbers">
+          <div class="kn-title">Key Numbers</div>
+          <div class="kn-item">
+            <div class="kn-val">672</div>
+            <div class="kn-desc">galaxies analysed<br/>453 cluster · 219 field</div>
+          </div>
+          <div class="kn-item">
+            <div class="kn-val">7.5%</div>
+            <div class="kn-desc">PAH emitter fraction<br/>in cluster galaxies</div>
+          </div>
+          <div class="kn-item">
+            <div class="kn-val">44.7%</div>
+            <div class="kn-desc">PAH emitter fraction<br/>in field galaxies</div>
+          </div>
+          <div class="kn-item">
+            <div class="kn-val">6 fields</div>
+            <div class="kn-desc">A2744, MACS0416, A370<br/>COSMOS, UDS, GOODS-S</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MOTIVATIONS ───────────────────────── -->
+    <div class="box">
+      <div class="box-header">Motivations</div>
+      <div class="box-body">
+        <ul>The PAH<sub>3.3</sub> is known to trace star formation in dusty environments <i class="cite"></i></ul>
+      </div>
+    </div>
+
+
+    <!-- ── DATA & OBSERVATIONS ───────────────────────── -->
+    <div class="box">
+      <div class="box-header">Data &amp; Observations</div>
+      <div class="box-body">
+        <div style="margin-bottom:7px;">
+          <span class="tag">JWST/NIRCam</span><span class="tag">HST</span>
+        </div>
+        <p>Deep NIRCam medium-band mosaics from <strong>UNCOVER, MegaScience, CANUCS, JADES DR4</strong> and the DAWN JWST Archive. Filters F300M-F480M used to photometrically extract PAH<sub>3.3</sub> at 0.2 &lt; <em>z</em> &lt; 0.4. PSF-matched to F480M (FWHM = 0.18″).</p>
+        <div class="kv"><strong>Spectroscopy:</strong> 20 catalogues incl. MUSE, GLASS, 3D-HST, DJA</div>
+        <div class="kv"><strong>Mass limit:</strong> M<sub>★</sub> &gt; 10<sup>8.9</sup> M<sub>⊙</sub> (90th pct. completeness)</div>
+        <div class="kv"><strong>Resolution:</strong> 0.04″/px → 130-220 pc/px at z ~ 0.3</div>
+        <div class="kv"><strong>SED fitting:</strong> BAGPIPES, non-parametric continuity SFH</div>
+
+        <div class="fig-placeholder" style="min-height:90px;">
+          <div class="fig-icon">🗺</div>
+          <div class="fig-label">Field footprints (Fig. 1)</div>
+          <div style="font-size:10px;color:#7070a0;">Insert Fig. 1: filter footprints<br/>for all 6 fields</div>
+        </div>
+        <div class="fig-caption">Fig. 1 — Filter coverage maps for each field. Colours show filter combinations used to extract PAH<sub>3.3</sub> at different redshifts.</div>
+      </div>
+    </div>
+
+    <!-- ── METHODOLOGY ───────────────────────────────── -->
+    <div class="box">
+      <div class="box-header">PAH Extraction Methodology</div>
+      <div class="box-body">
+        <h4>PAH flux formula</h4>
+        <p>For each galaxy at redshift <em>z</em>, we identify the central filter F<sub>C</sub> containing PAH<sub>3.3</sub> and two flanking filters F<sub>L</sub>, F<sub>R</sub>. The PAH flux is:</p>
+        <div style="background:#f5f0f2;border-left:3px solid var(--unipd-red);padding:6px 10px;border-radius:3px;margin:6px 0;font-size:12px;font-style:italic;">
+          F<sub>PAH</sub> = w<sub>FC</sub> [ f<sub>FC</sub> - (1-k)f<sub>FL</sub> - k·f<sub>FR</sub> ]
+        </div>
+        <p style="font-size:11.5px;color:var(--text-muted);">Continuum estimated by linear interpolation. Computed pixel-by-pixel with SNR &gt; 5 and EW &gt; 200 Å cuts.</p>
+
+        <h4>Galaxy classification</h4>
+        <p>PAH emitters defined by <em>s</em>PAH ≥ 10<sup>-26.5</sup> erg s<sup>-1</sup>cm<sup>-2</sup>M<sub>⊙</sub><sup>-1</sup> to isolate ISM physics from galaxy mass scale. UVJ diagram used to separate active, transition, and passive populations.</p>
+
+        <div class="fig-placeholder" style="min-height:85px;">
+          <div class="fig-icon">🌌</div>
+          <div class="fig-label">PAH map example (Fig. 3)</div>
+          <div style="font-size:10px;color:#7070a0;">Insert Fig. 3: RGB + PAH map<br/>for one galaxy (MACS0416)</div>
+        </div>
+        <div class="fig-caption">Fig. 3 — Example PAH<sub>3.3</sub> extraction. Left: RGB composite. Centre: PAH intensity. Right: equivalent width map. Blue contours: SNR&gt;5 &amp; EW&gt;200 Å.</div>
+      </div>
+    </div>
+
+    <!-- ── COLOUR-MASS DIAGRAM ───────────────────────── -->
+    <div class="box row-span-2">
+      <div class="box-header">Colour-Mass Diagram (U-B vs M★)</div>
+      <div class="box-body">
+        <div class="fig-placeholder" style="min-height:200px;">
+          <div class="fig-icon">📊</div>
+          <div class="fig-label">INSERT Fig. 5</div>
+          <div style="font-size:10px;color:#7070a0;margin-top:4px;">U-B vs stellar mass<br/>Cluster (top) · Field (bottom)<br/>Coloured circles = PAH emitters (coded by sPAH)</div>
+        </div>
+        <div class="fig-caption">Fig. 5 — U-B vs stellar mass. Cluster galaxies show a deficit of blue, low-mass (log M<sub>★</sub> &lt; 9.5) galaxies. PAH emitters in the cluster are found almost exclusively near the blue/green boundary.</div>
+        <p style="margin-top:7px;">Cluster galaxies lack the blue, low-mass star-forming tail prevalent in the field. In the red/green region, field galaxies frequently emit PAH, while cluster analogues almost never do — suggesting environmental quenching rather than intrinsic passive evolution.</p>
+        <p style="margin-top:7px;">Cluster galaxies lack the blue, low-mass star-forming tail prevalent in the field. In the red/green region, field galaxies frequently emit PAH, while cluster analogues almost never do — suggesting environmental quenching rather than intrinsic passive evolution.</p>
+        <p style="margin-top:7px;">Cluster galaxies lack the blue, low-mass star-forming tail prevalent in the field. In the red/green region, field galaxies frequently emit PAH, while cluster analogues almost never do — suggesting environmental quenching rather than intrinsic passive evolution.</p>
+        <p style="margin-top:7px;">Cluster galaxies lack the blue, low-mass star-forming tail prevalent in the field. In the red/green region, field galaxies frequently emit PAH, while cluster analogues almost never do — suggesting environmental quenching rather than intrinsic passive evolution.</p>
+
+      </div>
+    </div>
+
+    <!-- ── UVJ DIAGRAM ───────────────────────────────── -->
+    <div class="box">
+      <div class="box-header">UVJ Diagram: Star-Forming vs Passive</div>
+      <div class="box-body">
+        <div class="fig-placeholder" style="min-height:200px;">
+          <div class="fig-icon">📈</div>
+          <div class="fig-label">INSERT Fig. 6</div>
+          <div style="font-size:10px;color:#7070a0;margin-top:4px;">UVJ diagram<br/>Cluster (top) · Field (bottom)<br/>Active / transition / passive regions</div>
+        </div>
+        <div class="fig-caption">Fig. 6 — UVJ diagram. Solid line: Williams+09 separation. Dashed: transition zone (±0.1 mag). PAH emitters concentrate in active + transition zones.</div>
+        <p style="margin-top:7px;">The UVJ transition zone in clusters is nearly devoid of PAH emitters despite similar SFH shapes to field analogues. Three galaxies in the passive region show faint PAH, linked to residual central star formation or dust lanes confirmed by SED fitting.</p>
+      </div>
+    </div>
+
+    <!-- ── FRACTION OF PAH EMITTERS ─────────────────── -->
+    <div class="box">
+      <div class="box-header">Fraction of PAH Emitters</div>
+      <div class="box-body">
+        <div class="fig-placeholder" style="min-height:200px;">
+          <div class="fig-icon">📉</div>
+          <div class="fig-label">INSERT Fig. 7</div>
+          <div style="font-size:10px;color:#7070a0;margin-top:4px;">PAH emitter fraction vs M★ and R/R₂₀₀<br/>All / Active / Transition / Passive<br/>(Cluster = orange · Field = blue)</div>
+        </div>
+        <div class="fig-caption">Fig. 7 — PAH emitter fractions as function of stellar mass (left) and cluster-centric distance (right) for UVJ active, transition, and passive sub-samples.</div>
+        <p style="margin-top:7px;">Cluster fractions are systematically below field values across all UVJ zones. The deficit is largest in the <em>transition zone</em> at log M<sub>★</sub> &lt; 10.2 M<sub>⊙</sub>, persisting up to R<sub>200</sub>. Among active galaxies the cluster fraction begins to converge with the field at large radii, but remains suppressed in the centre.</p>
+      </div>
+    </div>
+
+    <!-- ── RPS COMPANION PAPER ───────────────────────── -->
+    <div class="box col-span-2">
+      <div class="box-header" style="background:#4a1a6e;">Companion Study: PAH in Ram-Pressure Stripped Galaxies at z ~ 0.3 &nbsp;<span style="font-weight:400;font-size:10px;">(Benotto et al. 2026b)</span></div>
+      <div class="box-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div>
+            <p>In a companion paper we analyse <strong>9 RPS jellyfish galaxies</strong> in Abell 2744. PAH<sub>3.3</sub> emission is detected in stripped tail clumps outside the galactic disk, with <strong>asymmetric PAH maps aligned with the stripping direction</strong>.</p>
+            <p><strong>Fireball model:</strong> age gradients along the tails — younger clumps further from the disk — are observed for the <em>first time beyond the Local Universe</em>, consistent with gas collapse timescales after stripping.</p>
+            <ul>
+              <li>PAH-SFR correlation holds in stripped clumps for ages &lt; 1 Gyr</li>
+              <li>PAH in clumps must either form in &lt;10 Myr (excluding AGB origin) or be directly stripped with the atomic gas</li>
+              <li>RPS may clear PAH molecules rapidly, explaining the low transition-zone fraction in the statistical sample</li>
+            </ul>
+          </div>
+          <div>
+            <div class="rps-fig-grid">
+              <div class="rps-fig-mini">Galaxy 10685<br/>RPS PAH map<br/>(insert image)</div>
+              <div class="rps-fig-mini">Galaxy 9856<br/>RPS PAH map<br/>(insert image)</div>
+              <div class="rps-fig-mini">Age gradient<br/>along tail<br/>(insert Fig. 2)</div>
+            </div>
+            <div class="fig-placeholder" style="min-height:90px;margin-top:6px;">
+              <div class="fig-label">INSERT RPS figures from Benotto+2026b</div>
+              <div style="font-size:10px;color:#7070a0;">RGB + PAH maps for 3 jellyfish galaxies<br/>showing PAH emission in stripped clumps</div>
+            </div>
+            <div class="fig-caption">Asymmetric PAH emission in two RPS galaxies. The A<sub>RPS</sub> parameter quantifies morphological asymmetry along the stripping direction.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DISCUSSION ────────────────────────────────── -->
+    <div class="box row-span-2">
+      <div class="box-header">Discussion</div>
+      <div class="box-body">
+        <h4>SFR cannot explain PAH deficit alone</h4>
+        <p>In the UVJ transition zone, cluster galaxies have SFR<sub>SED</sub> = 0.08 ± 0.04 M<sub>⊙</sub>/yr vs 0.17 ± 0.05 M<sub>⊙</sub>/yr in the field — a factor of ~2. Yet the PAH fraction differs by a factor of ~5-10. The SFH shapes are <em>statistically identical</em>. This decoupling indicates that PAH molecules are being <strong>destroyed or removed</strong> independently of ongoing star formation.</p>
+
+        <h4>Environmental mechanisms</h4>
+        <ul>
+          <li>Lower median A<sub>V</sub> in cluster transition galaxies (0.1 vs 0.3 mag) confirms dust and PAH removal</li>
+          <li>RPS can strip PAH molecules along with atomic gas on short timescales</li>
+          <li>Strangulation / starvation truncates gas supply, halting PAH replenishment</li>
+          <li>Effect persists to R<sub>200</sub>, suggesting pre-processing or long orbital timescales</li>
+        </ul>
+
+        <h4>PAH as environmental tracer</h4>
+        <p>PAH<sub>3.3</sub> emission responds to cluster environment <em>earlier and more sensitively</em> than SED-based SFR, making it a powerful diagnostic of ISM conditions during galaxy transformation.</p>
+      </div>
+    </div>
+
+    <!-- ── CONCLUSIONS ───────────────────────────────── -->
+    <div class="box col-span-2 conclusions-box">
+      <div class="box-header" style="background:#6B1221;">Conclusions</div>
+      <div class="box-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <ul style="margin-top:4px;">
+            <li style="color:#eee;font-size:12.5px;margin-bottom:8px;">Only <strong style="color:#f5a0b0;">7.5%</strong> of cluster galaxies are PAH emitters at z ~ 0.2-0.4, vs <strong style="color:#f5a0b0;">44.7%</strong> in the field — a factor of ~6 environmental suppression.</li>
+            <li style="color:#eee;font-size:12.5px;margin-bottom:8px;">Suppression is strongest in the <strong style="color:#f5a0b0;">UVJ transition zone</strong>, with cluster fractions &lt;10% at log M<sub>★</sub> &lt; 10.2 M<sub>⊙</sub> up to R<sub>200</sub>.</li>
+            <li style="color:#eee;font-size:12.5px;margin-bottom:8px;">The deficit cannot be explained by SFR differences alone — environmental processes <strong style="color:#f5a0b0;">physically remove or destroy PAH molecules</strong>.</li>
+          </ul>
+          <ul style="margin-top:4px;">
+            <li style="color:#eee;font-size:12.5px;margin-bottom:8px;">Lower dust extinction (A<sub>V</sub> = 0.1 vs 0.3 mag) in cluster transition galaxies confirms <strong style="color:#f5a0b0;">dust + PAH stripping</strong> by ram pressure.</li>
+            <li style="color:#eee;font-size:12.5px;margin-bottom:8px;">In RPS tail clumps (Benotto+2026b), PAH emission traces the <strong style="color:#f5a0b0;">fireball model</strong> — first detection beyond the Local Universe.</li>
+            <li style="color:#eee;font-size:12.5px;margin-bottom:8px;">PAH<sub>3.3</sub> is a <strong style="color:#f5a0b0;">sensitive, independent tracer</strong> of cluster environmental effects on the ISM, complementary to SED-based SFR.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── REFERENCES ────────────────────────────────── -->
+    <div class="box col-span-3">
+      <div class="box-header">References</div>
+      <div class="box-body refs-box" style="padding:10px 16px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px 20px;">
+          <div class="ref-item">Benotto et al. 2026a, A&amp;A, 706, A300 (epimetheus)</div>
+          <div class="ref-item">Benotto et al. 2026b, A&amp;A, 706, A300 (RPS PAH)</div>
+          <div class="ref-item">Bezanson et al. 2024, ApJ, 974, 92 (UNCOVER)</div>
+          <div class="ref-item">Carnall et al. 2018, MNRAS, 480, 4379 (BAGPIPES)</div>
+          <div class="ref-item">Gunn &amp; Gott 1972, ApJ, 176, 1 (RPS theory)</div>
+          <div class="ref-item">Lai et al. 2020, ApJ, 905, 55 (PAH SFR cal.)</div>
+          <div class="ref-item">Leja et al. 2019, ApJ, 876, 3 (cont. SFH)</div>
+          <div class="ref-item">Sarrouh et al. 2026, ApJS, 282, 3 (CANUCS)</div>
+          <div class="ref-item">Suess et al. 2024, ApJ, 976, 101 (MegaScience)</div>
+          <div class="ref-item">Vulcani et al. 2023, ApJ, 948, L15 (A2744)</div>
+          <div class="ref-item">Watson et al. 2025a, A&amp;A, 699, A225 (GLASS-JWST)</div>
+          <div class="ref-item">Whitcomb et al. 2024, ApJ, 974, 20 (PAH metallicity)</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- ═══════════════════ FOOTER ═══════════════════════ -->
+  <div class="poster-footer">
+    <div>Benotto &amp; Vulcani 2026 · A&amp;A (submitted) · Contact: pietro.benotto@inaf.it</div>
+    <div>Based on NASA/ESA HST and NASA/ESA/CSA JWST observations</div>
+    <div>Programs: GO-4111, MAGNIF, ALT, GLASS, UNCOVER, CANUCS</div>
+  </div>
+
+</div><!-- /poster -->
+</body>
+</html>
